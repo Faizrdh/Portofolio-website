@@ -93,7 +93,7 @@ function ProjectGlyph({ accent }: { accent: Project["accent"] }) {
       {accent === "d" && (
         <g>
           <circle cx="160" cy="150" r="80" fill={`url(#g-${accent})`} />
-          <circle cx="240" cy="150" r="80" fill={`url(#g-${accent})`} opacity="0.7" mixBlendMode="multiply" />
+          <circle cx="240" cy="150" r="80" fill={`url(#g-${accent})`} opacity="0.7" style={{ mixBlendMode: "multiply" }} />
         </g>
       )}
     </svg>
