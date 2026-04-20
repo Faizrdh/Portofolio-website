@@ -21,17 +21,17 @@ export function SiteFooter() {
           </p>
           <ul className="space-y-2 text-[15px] text-ink">
             <li>
-              <a href="mailto:hello@aidenmori.com" className="link-underline">
-                hello@aidenmori.com
+              <a href="mailto:faizridho.work@gmail.com" className="link-underline">
+                faizridho.work@gmail.com
               </a>
             </li>
             <li>
-              <a href="https://github.com" className="link-underline" target="_blank" rel="noreferrer">
+              <a href="https://github.com/Faizrdh" className="link-underline" target="_blank" rel="noreferrer">
                 GitHub ↗
               </a>
             </li>
             <li>
-              <a href="https://linkedin.com" className="link-underline" target="_blank" rel="noreferrer">
+              <a href="https://www.linkedin.com/in/faiz-ridho-90573917a/" className="link-underline" target="_blank" rel="noreferrer">
                 LinkedIn ↗
               </a>
             </li>
