@@ -22,9 +22,9 @@ export const Route = createFileRoute("/contact")({
 });
 
 const channels = [
-  { label: "Email", value: "hello@aidenmori.com", href: "mailto:hello@aidenmori.com" },
-  { label: "LinkedIn", value: "/in/aidenmori", href: "https://linkedin.com" },
-  { label: "GitHub", value: "@aidenmori", href: "https://github.com" },
+  { label: "Email", value: "faizridho.work@gmail.com", href: "mailto:faizridho.work@gmail.com" },
+  { label: "LinkedIn", value: "/in/faiz-ridho-90573917a", href: "https://www.linkedin.com/in/faiz-ridho-90573917a/" },
+  { label: "GitHub", value: "@Faizrdh", href: "https://github.com/Faizrdh" },
 ];
 
 function ContactPage() {
@@ -55,7 +55,7 @@ function ContactPage() {
 
         <Reveal delay={0.18}>
           <motion.a
-            href="mailto:hello@aidenmori.com"
+            href="mailto:faizridho.work@gmail.com"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 320, damping: 22 }}

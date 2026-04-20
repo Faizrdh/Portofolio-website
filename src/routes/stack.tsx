@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
+import { TechLogo } from "@/components/tech-logo";
 import { motion } from "framer-motion";
 
 export const Route = createFileRoute("/stack")({
@@ -30,7 +31,7 @@ const groups = [
       { name: "TypeScript", role: "Types as documentation" },
       { name: "React", role: "Composition over inheritance" },
       { name: "Next.js", role: "When SSR earns its keep" },
-      { name: "Astro", role: "Content-first sites" },
+      { name: "Livewire", role: "Reactive Laravel UIs" },
       { name: "Tailwind CSS", role: "Tokens, not opinions" },
       { name: "Framer Motion", role: "Restrained motion" },
     ],
@@ -40,11 +41,11 @@ const groups = [
     note: "Where the data lives.",
     items: [
       { name: "Node.js", role: "Default runtime" },
-      { name: "tRPC", role: "Typed end-to-end" },
+      { name: "Express", role: "Minimal, unopinionated" },
       { name: "PostgreSQL", role: "Boring, durable" },
+      { name: "MySQL", role: "Relational workhorse" },
       { name: "Supabase", role: "Auth + DB, fast" },
       { name: "Prisma", role: "Schema as source" },
-      { name: "Stripe", role: "Money, handled" },
     ],
   },
   {
@@ -52,11 +53,8 @@ const groups = [
     note: "Where decisions are made.",
     items: [
       { name: "Figma", role: "Systems & flows" },
-      { name: "Linear", role: "How work moves" },
-      { name: "Notion", role: "Thinking out loud" },
-      { name: "Raycast", role: "Hands on keyboard" },
-      { name: "Playwright", role: "Trust, automated" },
       { name: "Vercel", role: "Ship without ceremony" },
+      { name: "Canva", role: "Quick visual drafts" },
     ],
   },
 ];
@@ -96,11 +94,16 @@ function StackPage() {
                   >
                     <span className="pointer-events-none absolute inset-0 bg-gradient-to-br from-wash/0 via-wash/0 to-wash/0 transition-colors duration-500 group-hover:from-wash/10 group-hover:to-transparent" />
                     <div className="relative flex items-start justify-between gap-4">
-                      <div>
-                        <p className="text-xl font-medium tracking-tight text-ink">
-                          {it.name}
-                        </p>
-                        <p className="mt-1 text-[13px] text-ink-soft">{it.role}</p>
+                      <div className="flex items-start gap-4">
+                        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border bg-paper text-ink transition-colors duration-500 group-hover:text-wash group-hover:border-wash/40">
+                          <TechLogo name={it.name} className="h-6 w-6" />
+                        </span>
+                        <div>
+                          <p className="text-xl font-medium tracking-tight text-ink">
+                            {it.name}
+                          </p>
+                          <p className="mt-1 text-[13px] text-ink-soft">{it.role}</p>
+                        </div>
                       </div>
                       <span className="text-[10px] tracking-[0.25em] uppercase text-ink-soft transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:text-wash">
                         ✦
