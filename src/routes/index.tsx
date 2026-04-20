@@ -70,10 +70,10 @@ function Hero() {
               Portfolio · 2025
             </motion.p>
 
-            <h1 className="font-semibold tracking-tight text-ink leading-[0.95] text-[clamp(2.75rem,9vw,8rem)]">
-              <RevealLine delay={0.05}>Aiden Mori,</RevealLine>
+            <h1 className="font-semibold tracking-tight text-ink leading-[0.95] text-[clamp(2.5rem,8vw,7rem)]">
+              <RevealLine delay={0.05}>Clarity,</RevealLine>
               <RevealLine delay={0.18}>
-                designs <span className="italic font-light text-wash">quietly.</span>
+                built through <span className="italic font-light text-wash">systems.</span>
               </RevealLine>
             </h1>
 
@@ -83,8 +83,9 @@ function Hero() {
               transition={{ duration: 0.8, delay: 0.45, ease }}
               className="mt-10 max-w-xl text-ink-soft text-lg md:text-xl leading-relaxed text-balance"
             >
-              A product designer and front-end engineer building calm,
-              considered software for ambitious teams.
+              A web developer and IT programmer building structured, reliable,
+              and scalable digital products — where clarity and purpose matter
+              more than noise.
             </motion.p>
 
             <motion.div
