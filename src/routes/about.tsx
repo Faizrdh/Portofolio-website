@@ -5,49 +5,45 @@ import { Reveal } from "@/components/reveal";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Aiden Mori" },
+      { title: "About — Clarity, built through systems" },
       {
         name: "description",
         content:
-          "A short story about a designer-engineer who believes restraint is a feature. Background, focus, and strengths.",
+          "Web developer and IT programmer focused on building structured, reliable, and scalable digital products — clear, efficient, and purposeful.",
       },
-      { property: "og:title", content: "About — Aiden Mori" },
+      { property: "og:title", content: "About — Clarity, built through systems" },
       {
         property: "og:description",
-        content: "Designer-engineer. Restraint as a feature. A short story.",
+        content:
+          "Web developer and IT programmer building systems that feel simple, even when they are not.",
       },
     ],
   }),
   component: AboutPage,
 });
 
-const highlights = [
-  { k: "Years shipping", v: "9+" },
-  { k: "Products in production", v: "27" },
-  { k: "Teams led", v: "4" },
-  { k: "Coffees / day", v: "2.5" },
+const focus = [
+  { k: "Focus", v: "Web & Systems" },
+  { k: "Stack", v: "Laravel · React" },
+  { k: "Mobile", v: "Android · MVVM" },
+  { k: "Care for", v: "Clarity" },
 ];
 
 const timeline = [
   {
-    year: "2022 — Now",
-    role: "Independent · Design & Engineering",
-    note: "Partnering with founders and editors on calm, durable products.",
+    year: "Internship",
+    role: "IT Programmer · KATADATA",
+    note: "Developed an interactive front-end interface to visualize traffic congestion in the Simatupang area, focusing on clarity, usability, and real-time data presentation. Collaborated on data-driven features that help users interpret complex information through intuitive UI and structured visualization.",
   },
   {
-    year: "2019 — 2022",
-    role: "Senior Product Designer · Northwind",
-    note: "Built the design system that survived three rebrands and a merger.",
+    year: "Internship",
+    role: "Web Developer · Pustekinfo DPR-RI",
+    note: "Built a recommendation-based web system for inter-parliamentary cooperation using Laravel and MySQL. Designed and implemented structured workflows to improve administrative efficiency and data management, ensuring reliability and scalability of internal processes.",
   },
   {
-    year: "2016 — 2019",
-    role: "Designer & Front-end · Atlas Media",
-    note: "Reshaped a 90-year-old publication for the small screen.",
-  },
-  {
-    year: "2014 — 2016",
-    role: "Junior Designer · Studio Halcyon",
-    note: "Learned that the best detail is the one nobody notices.",
+    year: "Apprenticeship",
+    role: "Mobile Android Developer · Infinite Learning",
+    note: "Developed multiple Android applications using modern architecture patterns (MVVM), focusing on UI/UX consistency and application performance. Gained experience across full development cycles — from interface design to implementation and testing.",
   },
 ];
 
@@ -56,8 +52,8 @@ function AboutPage() {
     <>
       <PageHeader
         eyebrow="About"
-        title="Restraint, used as a tool."
-        lead="I'm Aiden — a designer and front-end engineer based in Lisbon. I work with founders, editors, and product teams who care as much about how a thing feels as what it does."
+        title="Clarity, built through systems."
+        lead="I'm a web developer and IT programmer focused on building structured, reliable, and scalable digital products. I care not only about how systems work, but how they are experienced — clear, efficient, and purposeful."
       />
 
       <section className="mx-auto max-w-7xl px-6 lg:px-10 pb-24 md:pb-32">
@@ -65,19 +61,19 @@ function AboutPage() {
           {/* Story */}
           <div className="col-span-12 md:col-span-7 space-y-8 text-[17px] leading-relaxed text-ink">
             <Reveal as="p">
-              I grew up between two languages and a lot of paper. That probably
-              explains the typography obsession, and the suspicion of any
-              interface that talks more than it listens.
+              My work sits between engineering and usability: designing backend
+              logic, shaping frontend interactions, and ensuring data flows the
+              way it should.
             </Reveal>
             <Reveal as="p" delay={0.05}>
-              Today I lead small, senior teams through the messy middle of
-              product work — research, systems, prototypes, and the engineering
-              required to ship them. I&apos;m happiest when a product feels
-              inevitable, like it could not have been any other way.
+              I&apos;ve contributed to internal systems, dashboards, and
+              data-driven platforms — where clarity, performance, and
+              maintainability matter more than noise.
             </Reveal>
             <Reveal as="p" delay={0.1} className="text-ink-soft">
-              I write occasionally about design systems, editorial layouts on
-              the web, and the slow erosion of craft in software.
+              I&apos;m most engaged when solving real problems through clean
+              architecture and thoughtful implementation — building systems
+              that feel simple, even when they are not.
             </Reveal>
           </div>
 
@@ -85,13 +81,13 @@ function AboutPage() {
           <aside className="col-span-12 md:col-span-5">
             <Reveal>
               <p className="text-[11px] tracking-[0.3em] uppercase text-wash mb-6">
-                In numbers
+                At a glance
               </p>
             </Reveal>
             <ul className="grid grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden border border-border">
-              {highlights.map((h, i) => (
+              {focus.map((h, i) => (
                 <Reveal key={h.k} as="li" delay={0.05 * i} className="bg-card p-6">
-                  <p className="text-3xl md:text-4xl font-semibold tracking-tight text-ink">
+                  <p className="text-2xl md:text-3xl font-semibold tracking-tight text-ink">
                     {h.v}
                   </p>
                   <p className="mt-1 text-[11px] tracking-[0.2em] uppercase text-ink-soft">
@@ -108,13 +104,13 @@ function AboutPage() {
           <Reveal>
             <p className="text-[11px] tracking-[0.3em] uppercase text-wash mb-8 inline-flex items-center gap-3">
               <span className="inline-block h-px w-8 bg-wash/60" />
-              Trajectory
+              Experience
             </p>
           </Reveal>
 
           <ol className="relative border-l border-border pl-8 md:pl-12 space-y-12">
             {timeline.map((t, i) => (
-              <Reveal key={t.year} as="li" delay={i * 0.05} className="relative">
+              <Reveal key={t.role} as="li" delay={i * 0.05} className="relative">
                 <span className="absolute -left-[37px] md:-left-[49px] top-2 inline-flex h-2.5 w-2.5 rounded-full bg-wash ring-4 ring-background" />
                 <p className="text-[11px] tracking-[0.25em] uppercase text-ink-soft">
                   {t.year}
@@ -122,7 +118,7 @@ function AboutPage() {
                 <p className="mt-2 text-2xl md:text-3xl font-medium tracking-tight text-ink">
                   {t.role}
                 </p>
-                <p className="mt-2 max-w-xl text-ink-soft text-[15px] leading-relaxed">
+                <p className="mt-3 max-w-2xl text-ink-soft text-[15px] leading-relaxed">
                   {t.note}
                 </p>
               </Reveal>
