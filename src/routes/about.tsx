@@ -57,18 +57,18 @@ function AboutPage() {
       />
 
       <section className="mx-auto max-w-7xl px-6 lg:px-10 pb-24 md:pb-32">
-        <div className="grid grid-cols-12 gap-10 md:gap-16">
+        <div className="grid grid-cols-12 gap-10 md:gap-16 items-start">
           {/* Story */}
-          <div className="col-span-12 md:col-span-7 space-y-8 text-[17px] leading-relaxed text-ink">
+          <div className="col-span-12 md:col-span-7 space-y-6 text-[17px] leading-relaxed text-ink">
             <Reveal as="p">
-              My work sits between engineering and usability: designing backend
-              logic, shaping frontend interactions, and ensuring data flows the
-              way it should.
+              My work sits between engineering and usability — designing backend
+              logic, shaping frontend interactions, and making sure data flows
+              exactly the way it should.
             </Reveal>
             <Reveal as="p" delay={0.05}>
               I&apos;ve contributed to internal systems, dashboards, and
-              data-driven platforms — where clarity, performance, and
-              maintainability matter more than noise.
+              data-driven platforms where clarity, performance, and
+              maintainability matter far more than noise.
             </Reveal>
             <Reveal as="p" delay={0.1} className="text-ink-soft">
               I&apos;m most engaged when solving real problems through clean
@@ -77,16 +77,16 @@ function AboutPage() {
             </Reveal>
           </div>
 
-          {/* Highlights */}
-          <aside className="col-span-12 md:col-span-5">
+          {/* Highlights — aligned to top, raised */}
+          <aside className="col-span-12 md:col-span-5 md:-mt-2">
             <Reveal>
               <p className="text-[11px] tracking-[0.3em] uppercase text-wash mb-6">
                 At a glance
               </p>
             </Reveal>
-            <ul className="grid grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden border border-border">
+            <ul className="grid grid-cols-2 gap-px bg-border/70 rounded-2xl overflow-hidden border border-border/70 glass-capsule">
               {focus.map((h, i) => (
-                <Reveal key={h.k} as="li" delay={0.05 * i} className="bg-card p-6">
+                <Reveal key={h.k} as="li" delay={0.05 * i} className="bg-card/60 p-6 backdrop-blur-sm">
                   <p className="text-2xl md:text-3xl font-semibold tracking-tight text-ink">
                     {h.v}
                   </p>
