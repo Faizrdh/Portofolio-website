@@ -108,8 +108,7 @@ function Hero() {
           </div>
 
           <div className="hidden md:flex col-span-3 flex-col items-end gap-2 text-right text-[11px] tracking-[0.25em] uppercase text-ink-soft">
-            <p>Lisbon · 38.7°N</p>
-            <p>Available Q2 2025</p>
+            <p>Jakarta · East Jakarta</p>
           </div>
         </div>
       </div>

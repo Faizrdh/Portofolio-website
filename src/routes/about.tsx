@@ -1,7 +1,9 @@
+/* eslint-disable prettier/prettier */
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
 
+// eslint-disable-next-line prettier/prettier
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -57,32 +59,26 @@ function AboutPage() {
       />
 
       <section className="mx-auto max-w-7xl px-6 lg:px-10 pb-24 md:pb-32">
-        <div className="grid grid-cols-12 gap-10 md:gap-16">
-          {/* Story */}
-          <div className="col-span-12 md:col-span-7 space-y-8 text-[17px] leading-relaxed text-ink">
+        <div className="grid grid-cols-12 gap-10 md:gap-16 items-start">
+        <div className="col-span-12 md:col-span-7 space-y-5 text-[17px] leading-relaxed text-ink">
             <Reveal as="p">
-              My work sits between engineering and usability: designing backend
-              logic, shaping frontend interactions, and ensuring data flows the
-              way it should.
+              My work sits between engineering and usability: designing backend logic, shaping
+              frontend interactions, and ensuring data flows the way it should.
             </Reveal>
             <Reveal as="p" delay={0.05}>
-              I&apos;ve contributed to internal systems, dashboards, and
-              data-driven platforms — where clarity, performance, and
-              maintainability matter more than noise.
+              I&apos;ve contributed to internal systems, dashboards, and data-driven platforms —
+              where clarity, performance, and maintainability matter more than noise.
             </Reveal>
             <Reveal as="p" delay={0.1} className="text-ink-soft">
-              I&apos;m most engaged when solving real problems through clean
-              architecture and thoughtful implementation — building systems
-              that feel simple, even when they are not.
+              I&apos;m most engaged when solving real problems through clean architecture and
+              thoughtful implementation — building systems that feel simple, even when they are not.
             </Reveal>
           </div>
 
           {/* Highlights */}
           <aside className="col-span-12 md:col-span-5">
             <Reveal>
-              <p className="text-[11px] tracking-[0.3em] uppercase text-wash mb-6">
-                At a glance
-              </p>
+              <p className="text-[11px] tracking-[0.3em] uppercase text-wash mb-6">At a glance</p>
             </Reveal>
             <ul className="grid grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden border border-border">
               {focus.map((h, i) => (
@@ -90,9 +86,7 @@ function AboutPage() {
                   <p className="text-2xl md:text-3xl font-semibold tracking-tight text-ink">
                     {h.v}
                   </p>
-                  <p className="mt-1 text-[11px] tracking-[0.2em] uppercase text-ink-soft">
-                    {h.k}
-                  </p>
+                  <p className="mt-1 text-[11px] tracking-[0.2em] uppercase text-ink-soft">{h.k}</p>
                 </Reveal>
               ))}
             </ul>
@@ -112,15 +106,11 @@ function AboutPage() {
             {timeline.map((t, i) => (
               <Reveal key={t.role} as="li" delay={i * 0.05} className="relative">
                 <span className="absolute -left-[37px] md:-left-[49px] top-2 inline-flex h-2.5 w-2.5 rounded-full bg-wash ring-4 ring-background" />
-                <p className="text-[11px] tracking-[0.25em] uppercase text-ink-soft">
-                  {t.year}
-                </p>
+                <p className="text-[11px] tracking-[0.25em] uppercase text-ink-soft">{t.year}</p>
                 <p className="mt-2 text-2xl md:text-3xl font-medium tracking-tight text-ink">
                   {t.role}
                 </p>
-                <p className="mt-3 max-w-2xl text-ink-soft text-[15px] leading-relaxed">
-                  {t.note}
-                </p>
+                <p className="mt-3 max-w-2xl text-ink-soft text-[15px] leading-relaxed">{t.note}</p>
               </Reveal>
             ))}
           </ol>
