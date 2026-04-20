@@ -51,7 +51,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 text-xs text-ink-soft">
-          <p>© {year} Aiden Mori. Crafted with intention.</p>
+          <p>© {year} Faiz Ridho. Crafted with intention.</p>
           <p className="tracking-[0.2em] uppercase">Ink Wash · v1.0</p>
         </div>
       </div>
