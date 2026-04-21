@@ -12,7 +12,7 @@ export function SiteFooter() {
             Currently
           </p>
           <p className="text-ink text-[15px] leading-relaxed">
-            Open to product design & front-end engineering roles.
+            Open to front-end engineering project, management system,multi role app, and more.
             <br />
             Based in Jakarta — East Jakarta.
           </p>

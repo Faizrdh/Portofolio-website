@@ -25,11 +25,32 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
+// ── Tambahkan properti `color` untuk tiap platform ──
 const socials = [
-  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/faiz-ridho-90573917a/" },
-  { icon: Github, label: "GitHub", href: "https://github.com/Faizrdh" },
-  { icon: Mail, label: "Email", href: "mailto:faizridho.work@gmail.com" },
-  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/faiz.rdh/" },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/faiz-ridho-90573917a/",
+    color: "#0077b5",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    href: "https://github.com/Faizrdh",
+    color: "#24292e",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    href: "mailto:faizridho.work@gmail.com",
+    color: "#6D8196",
+  },
+  {
+    icon: Instagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/faiz.rdh/",
+    color: "#E1306C",
+  },
 ];
 
 const traits = [
@@ -46,7 +67,7 @@ const traits = [
   {
     icon: Zap,
     title: "Fast Learner",
-    body: "I have a high curiosity for new technologies and am accustomed to self-directed, structured learning."
+    body: "I have a high curiosity for new technologies and am accustomed to self-directed, structured learning.",
   },
   {
     icon: Clock,
@@ -59,10 +80,10 @@ const timeline = [
   {
     year: "Internship - December 2026 - June 2026",
     role: "IT Programmer · KATADATA",
-    note: "Developed an interactive front-end interface to visualize traffic congestion in the Simatupang area, Ramadan baik, and JFSS Event  focusing on clarity.",
+    note: "Developed an interactive front-end interface to visualize traffic congestion in the Simatupang area, Ramadan baik, and JFSS Event focusing on clarity.",
   },
   {
-    year: "Internship - (Juni 2024 - Desember 2024",
+    year: "Internship - (Juni 2024 - Desember 2024)",
     role: "Web Developer · Pustekinfo DPR-RI",
     note: "Built a recommendation-based web system for inter-parliamentary cooperation using Laravel and MySQL. Designed structured workflows to improve administrative efficiency.",
   },
@@ -105,6 +126,7 @@ function AboutPage() {
                 </p>
               </Reveal>
 
+              {/* ── Social Pill Buttons dengan animasi hover ── */}
               <Reveal delay={0.18}>
                 <div className="mt-8 flex flex-wrap gap-3">
                   {socials.map((s) => (
@@ -114,9 +136,12 @@ function AboutPage() {
                       target="_blank"
                       rel="noreferrer"
                       aria-label={s.label}
-                      className="group inline-flex items-center gap-2 rounded-full glass-capsule px-4 py-2 text-sm text-ink hover:text-wash-deep transition-colors"
+                      // Tambahkan class "social-pill" + set CSS variable --social-color
+                      className="social-pill group inline-flex items-center gap-2 rounded-full glass-capsule px-4 py-2 text-sm text-ink"
+                      style={{ "--social-color": s.color } as React.CSSProperties}
                     >
-                      <s.icon className="h-4 w-4" />
+                      {/* Tambahkan class "social-icon-svg" pada icon */}
+                      <s.icon className="social-icon-svg h-4 w-4" />
                       <span className="tracking-wide">{s.label}</span>
                     </a>
                   ))}
@@ -196,7 +221,6 @@ function AboutPage() {
 /* ----------------------------- Portrait Orbit ----------------------------- */
 
 function PortraitOrbit({ reduce }: { reduce: boolean }) {
-  // Orbit radius in px (responsive via container size)
   const radius = 180;
 
   return (
@@ -233,7 +257,6 @@ function PortraitOrbit({ reduce }: { reduce: boolean }) {
           height={896}
           className="w-full h-full object-cover"
         />
-        {/* Subtle ink wash on portrait */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -243,7 +266,7 @@ function PortraitOrbit({ reduce }: { reduce: boolean }) {
         />
       </div>
 
-      {/* Orbiting social icons — counter-rotate to keep icons upright */}
+      {/* ── Orbiting social icons dengan animasi hover ── */}
       <motion.div
         className="absolute inset-0"
         animate={reduce ? undefined : { rotate: 360 }}
@@ -264,10 +287,18 @@ function PortraitOrbit({ reduce }: { reduce: boolean }) {
               style={{ x, y }}
               animate={reduce ? undefined : { rotate: -360 }}
               transition={{ duration: 28, ease: "linear", repeat: Infinity }}
-              whileHover={{ scale: 1.15 }}
+              whileHover={{ scale: 1.18 }}
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-full glass-capsule text-ink hover:text-wash-deep transition-colors">
-                <s.icon className="h-[18px] w-[18px]" />
+              {/*
+                Tambahkan class "orbit-social-btn" + "glass-capsule"
+                Set CSS variable --social-color via style prop
+              */}
+              <span
+                className="orbit-social-btn flex h-11 w-11 items-center justify-center rounded-full glass-capsule text-ink transition-colors"
+                style={{ "--social-color": s.color } as React.CSSProperties}
+              >
+                {/* Tambahkan class "social-icon-svg" pada icon */}
+                <s.icon className="social-icon-svg h-[18px] w-[18px]" />
               </span>
             </motion.a>
           );
