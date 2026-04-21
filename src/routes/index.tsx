@@ -57,13 +57,13 @@ function Hero() {
         </>
       )}
 
-      {/* Bottom blend — fades hero into the next section */}
+      {/* Bottom blend — fades hero into the next section seamlessly */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-40"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-32"
         style={{
           background:
-            "linear-gradient(to top, var(--paper) 0%, color-mix(in oklab, var(--paper) 60%, transparent) 50%, transparent 100%)",
+            "linear-gradient(to top, var(--paper) 0%, transparent 100%)",
         }}
       />
 
