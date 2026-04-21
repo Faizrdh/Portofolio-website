@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
+import { motion, useReducedMotion } from "framer-motion";
+import { Github, Linkedin, Mail, Instagram, Users, Zap, Clock, Sparkles } from "lucide-react";
+import profile from "@/assets/Pas foto (2).png";
 
-// eslint-disable-next-line prettier/prettier
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -24,80 +25,145 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-const focus = [
-  { k: "Focus", v: "Web & Systems" },
-  { k: "Stack", v: "Laravel · React" },
-  { k: "Mobile", v: "Android · MVVM" },
-  { k: "Care for", v: "Clarity" },
+const socials = [
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/faiz-ridho-90573917a/" },
+  { icon: Github, label: "GitHub", href: "https://github.com/Faizrdh" },
+  { icon: Mail, label: "Email", href: "mailto:faizridho.work@gmail.com" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/faiz.rdh/" },
+];
+
+const traits = [
+  {
+    icon: Sparkles,
+    title: "Adaptable",
+    body: "Quick to adjust to new environments, tools, and workflows—staying productive even in the midst of change.",
+  },
+  {
+    icon: Users,
+    title: "Team Work",
+    body: "Communicative and collaborative. I believe the best results come from team synergy, not working alone.",
+  },
+  {
+    icon: Zap,
+    title: "Fast Learner",
+    body: "I have a high curiosity for new technologies and am accustomed to self-directed, structured learning."
+  },
+  {
+    icon: Clock,
+    title: "Time Management",
+    body: "Disciplined in managing priorities and deadlines—ensuring every task is completed on time while maintaining quality.",
+  },
 ];
 
 const timeline = [
   {
-    year: "Internship",
+    year: "Internship - December 2026 - June 2026",
     role: "IT Programmer · KATADATA",
-    note: "Developed an interactive front-end interface to visualize traffic congestion in the Simatupang area, focusing on clarity, usability, and real-time data presentation. Collaborated on data-driven features that help users interpret complex information through intuitive UI and structured visualization.",
+    note: "Developed an interactive front-end interface to visualize traffic congestion in the Simatupang area, Ramadan baik, and JFSS Event  focusing on clarity.",
   },
   {
-    year: "Internship",
+    year: "Internship - (Juni 2024 - Desember 2024",
     role: "Web Developer · Pustekinfo DPR-RI",
-    note: "Built a recommendation-based web system for inter-parliamentary cooperation using Laravel and MySQL. Designed and implemented structured workflows to improve administrative efficiency and data management, ensuring reliability and scalability of internal processes.",
+    note: "Built a recommendation-based web system for inter-parliamentary cooperation using Laravel and MySQL. Designed structured workflows to improve administrative efficiency.",
   },
   {
-    year: "Apprenticeship",
+    year: "Apprenticeship - (August 2023 - January 2023)",
     role: "Mobile Android Developer · Infinite Learning",
-    note: "Developed multiple Android applications using modern architecture patterns (MVVM), focusing on UI/UX consistency and application performance. Gained experience across full development cycles — from interface design to implementation and testing.",
+    note: "Developed multiple Android applications using modern architecture patterns (MVVM), focusing on UI/UX consistency and application performance.",
   },
 ];
 
 function AboutPage() {
+  const reduce = useReducedMotion();
+
   return (
     <>
-      <PageHeader
-        eyebrow="About"
-        title="Clarity, built through systems."
-        lead="I'm a web developer and IT programmer focused on building structured, reliable, and scalable digital products. I care not only about how systems work, but how they are experienced — clear, efficient, and purposeful."
-      />
+      {/* HERO — Split: narrative (left) + portrait orbit (right) */}
+      <section className="pt-36 md:pt-44 pb-20 md:pb-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="grid grid-cols-12 gap-10 lg:gap-16 items-center">
+            {/* LEFT — eyebrow, name, intro */}
+            <div className="col-span-12 lg:col-span-7 order-2 lg:order-1">
+              <Reveal>
+                <p className="text-[11px] tracking-[0.3em] uppercase text-wash mb-6 inline-flex items-center gap-3">
+                  <span className="inline-block h-px w-8 bg-wash/60" />
+                  About
+                </p>
+              </Reveal>
 
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 pb-24 md:pb-32">
-        <div className="grid grid-cols-12 gap-10 md:gap-16">
-          {/* Story */}
-          <div className="col-span-12 md:col-span-7 space-y-8 text-[17px] leading-relaxed text-ink">
-            <Reveal as="p">
-              My work sits between engineering and usability: designing backend
-              logic, shaping frontend interactions, and ensuring data flows the
-              way it should.
-            </Reveal>
-            <Reveal as="p" delay={0.05}>
-              I&apos;ve contributed to internal systems, dashboards, and
-              data-driven platforms — where clarity, performance, and
-              maintainability matter more than noise.
-            </Reveal>
-            <Reveal as="p" delay={0.1} className="text-ink-soft">
-              I&apos;m most engaged when solving real problems through clean architecture and
-              thoughtful implementation — building systems that feel simple, even when they are not.
-            </Reveal>
+              <Reveal delay={0.05}>
+                <h1 className="text-balance font-semibold tracking-tight text-ink text-5xl md:text-6xl lg:text-7xl leading-[1.02]">
+                  Hi, I&apos;m <span className="text-wash-deep">Faiz Ridho</span>.
+                </h1>
+              </Reveal>
+
+              <Reveal delay={0.12}>
+                <p className="mt-6 max-w-xl text-ink-soft text-lg leading-relaxed">
+                  A web developer and IT programmer focused on building
+                  structured, reliable, and scalable digital products — clear,
+                  efficient, and purposeful.
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.18}>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {socials.map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={s.label}
+                      className="group inline-flex items-center gap-2 rounded-full glass-capsule px-4 py-2 text-sm text-ink hover:text-wash-deep transition-colors"
+                    >
+                      <s.icon className="h-4 w-4" />
+                      <span className="tracking-wide">{s.label}</span>
+                    </a>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+
+            {/* RIGHT — Portrait with rotating orbit of social icons */}
+            <div className="col-span-12 lg:col-span-5 order-1 lg:order-2 flex justify-center">
+              <PortraitOrbit reduce={!!reduce} />
+            </div>
           </div>
+        </div>
+      </section>
 
-          {/* Highlights — aligned to top, raised */}
-          <aside className="col-span-12 md:col-span-5 md:-mt-2">
-            <Reveal>
-              <p className="text-[11px] tracking-[0.3em] uppercase text-wash mb-6">At a glance</p>
+      {/* TRAITS */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-10 pb-24 md:pb-32">
+        <Reveal>
+          <p className="text-[11px] tracking-[0.3em] uppercase text-wash mb-3 inline-flex items-center gap-3">
+            <span className="inline-block h-px w-8 bg-wash/60" />
+            What I bring
+          </p>
+        </Reveal>
+        <Reveal delay={0.05}>
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-ink max-w-2xl leading-[1.05]">
+            My Traits and Work Approach
+          </h2>
+        </Reveal>
+
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border/60 rounded-2xl overflow-hidden border border-border/60 glass-capsule">
+          {traits.map((t, i) => (
+            <Reveal key={t.title} delay={i * 0.06} className="bg-card/50 p-7 backdrop-blur-sm group">
+              <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-wash/10 text-wash-deep mb-5 group-hover:bg-wash/20 transition-colors">
+                <t.icon className="h-5 w-5" />
+              </div>
+              <p className="text-lg md:text-xl font-medium tracking-tight text-ink">
+                {t.title}
+              </p>
+              <p className="mt-2 text-sm text-ink-soft leading-relaxed">
+                {t.body}
+              </p>
             </Reveal>
-            <ul className="grid grid-cols-2 gap-px bg-border/70 rounded-2xl overflow-hidden border border-border/70 glass-capsule">
-              {focus.map((h, i) => (
-                <Reveal key={h.k} as="li" delay={0.05 * i} className="bg-card/60 p-6 backdrop-blur-sm">
-                  <p className="text-2xl md:text-3xl font-semibold tracking-tight text-ink">
-                    {h.v}
-                  </p>
-                  <p className="mt-1 text-[11px] tracking-[0.2em] uppercase text-ink-soft">{h.k}</p>
-                </Reveal>
-              ))}
-            </ul>
-          </aside>
+          ))}
         </div>
 
-        {/* Timeline */}
-        <div className="mt-28 md:mt-40">
+        {/* TIMELINE */}
+        <div className="mt-28 md:mt-36">
           <Reveal>
             <p className="text-[11px] tracking-[0.3em] uppercase text-wash mb-8 inline-flex items-center gap-3">
               <span className="inline-block h-px w-8 bg-wash/60" />
@@ -109,16 +175,104 @@ function AboutPage() {
             {timeline.map((t, i) => (
               <Reveal key={t.role} as="li" delay={i * 0.05} className="relative">
                 <span className="absolute -left-[37px] md:-left-[49px] top-2 inline-flex h-2.5 w-2.5 rounded-full bg-wash ring-4 ring-background" />
-                <p className="text-[11px] tracking-[0.25em] uppercase text-ink-soft">{t.year}</p>
+                <p className="text-[11px] tracking-[0.25em] uppercase text-ink-soft">
+                  {t.year}
+                </p>
                 <p className="mt-2 text-2xl md:text-3xl font-medium tracking-tight text-ink">
                   {t.role}
                 </p>
-                <p className="mt-3 max-w-2xl text-ink-soft text-[15px] leading-relaxed">{t.note}</p>
+                <p className="mt-3 max-w-2xl text-ink-soft text-[15px] leading-relaxed">
+                  {t.note}
+                </p>
               </Reveal>
             ))}
           </ol>
         </div>
       </section>
     </>
+  );
+}
+
+/* ----------------------------- Portrait Orbit ----------------------------- */
+
+function PortraitOrbit({ reduce }: { reduce: boolean }) {
+  // Orbit radius in px (responsive via container size)
+  const radius = 180;
+
+  return (
+    <div className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px]">
+      {/* Soft halo behind the portrait */}
+      <div
+        className="absolute inset-0 rounded-full blur-3xl opacity-60"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--wash) 35%, transparent), transparent 65%)",
+        }}
+      />
+
+      {/* Decorative rings */}
+      <div className="absolute inset-6 rounded-full border border-wash/20" />
+      <div className="absolute inset-0 rounded-full border border-wash/15" />
+
+      {/* Rotating dashed orbit */}
+      <motion.div
+        className="absolute inset-0 rounded-full"
+        style={{
+          border: "1px dashed color-mix(in oklab, var(--wash) 45%, transparent)",
+        }}
+        animate={reduce ? undefined : { rotate: 360 }}
+        transition={{ duration: 60, ease: "linear", repeat: Infinity }}
+      />
+
+      {/* Portrait — clipped circle */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[58%] h-[58%] rounded-full overflow-hidden ring-1 ring-wash/30 shadow-[0_30px_80px_-20px_rgba(74,74,74,0.45)]">
+        <img
+          src={profile}
+          alt="Portrait of Faiz Ridho"
+          width={896}
+          height={896}
+          className="w-full h-full object-cover"
+        />
+        {/* Subtle ink wash on portrait */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(180deg, transparent 60%, color-mix(in oklab, var(--paper) 55%, transparent))",
+          }}
+        />
+      </div>
+
+      {/* Orbiting social icons — counter-rotate to keep icons upright */}
+      <motion.div
+        className="absolute inset-0"
+        animate={reduce ? undefined : { rotate: 360 }}
+        transition={{ duration: 28, ease: "linear", repeat: Infinity }}
+      >
+        {socials.map((s, i) => {
+          const angle = (i / socials.length) * Math.PI * 2 - Math.PI / 2;
+          const x = Math.cos(angle) * radius;
+          const y = Math.sin(angle) * radius;
+          return (
+            <motion.a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={s.label}
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              style={{ x, y }}
+              animate={reduce ? undefined : { rotate: -360 }}
+              transition={{ duration: 28, ease: "linear", repeat: Infinity }}
+              whileHover={{ scale: 1.15 }}
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-full glass-capsule text-ink hover:text-wash-deep transition-colors">
+                <s.icon className="h-[18px] w-[18px]" />
+              </span>
+            </motion.a>
+          );
+        })}
+      </motion.div>
+    </div>
   );
 }
