@@ -7,13 +7,13 @@ import { projects } from "@/data/projects";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aiden Mori — Product Designer & Engineer" },
+      { title: "Faiz Ridho — Web Developer & IT Programmer" },
       {
         name: "description",
         content:
-          "Calm, considered digital products. Selected work for fintech, editorial, and healthcare clients.",
+          "Structured, reliable, and scalable digital products. Selected work for fintech, editorial, and healthcare clients.",
       },
-      { property: "og:title", content: "Aiden Mori — Product Designer & Engineer" },
+      { property: "og:title", content: "Faiz Ridho — Web Developer & IT Programmer" },
       {
         property: "og:description",
         content: "Calm, considered digital products. Selected work and case studies.",
@@ -38,16 +38,7 @@ function Hero() {
   const ease = [0.22, 1, 0.36, 1] as const;
 
   return (
-    <section className="relative min-h-[100svh] flex items-end overflow-hidden ink-gradient grain pt-28">
-      {/* Top blend — softens the hero into the floating navbar */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-40 z-[1]"
-        style={{
-          background:
-            "linear-gradient(to bottom, color-mix(in oklab, var(--paper) 70%, transparent) 0%, color-mix(in oklab, var(--paper) 25%, transparent) 55%, transparent 100%)",
-        }}
-      />
+    <section className="relative min-h-[100svh] flex items-end overflow-hidden grain pt-28">
       {/* Soft animated wash */}
       {!reduce && (
         <>
@@ -66,13 +57,13 @@ function Hero() {
         </>
       )}
 
-      {/* Bottom blend — fades hero into the next section */}
+      {/* Bottom blend — fades hero into the next section seamlessly */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-40"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-32"
         style={{
           background:
-            "linear-gradient(to top, var(--paper) 0%, color-mix(in oklab, var(--paper) 60%, transparent) 50%, transparent 100%)",
+            "linear-gradient(to top, var(--paper) 0%, transparent 100%)",
         }}
       />
 

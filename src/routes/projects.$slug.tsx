@@ -175,6 +175,120 @@ function ProjectDetail() {
         <Section label="Solution" title="What we changed" body={project.solution} />
       </section>
 
+      {/* PROJECT BRIEF — narrative + meta */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32 grid grid-cols-12 gap-10 md:gap-16">
+          <div className="col-span-12 md:col-span-3">
+            <Reveal>
+              <p className="text-[11px] tracking-[0.3em] uppercase text-wash sticky top-28 inline-flex items-center gap-3">
+                <span className="inline-block h-px w-8 bg-wash/60" /> Overview
+              </p>
+            </Reveal>
+          </div>
+          <div className="col-span-12 md:col-span-9">
+            <Reveal>
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-ink max-w-3xl text-balance">
+                The story behind the build.
+              </h2>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <p className="mt-8 text-[17px] md:text-[19px] leading-relaxed text-ink-soft max-w-3xl">
+                {project.details.overview}
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <dl className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border max-w-3xl">
+                {[
+                  { k: "Duration", v: project.details.duration },
+                  { k: "Team", v: project.details.team },
+                  { k: "Year", v: project.year },
+                ].map((m) => (
+                  <div key={m.k} className="bg-card p-5 md:p-6">
+                    <dt className="text-[10px] tracking-[0.25em] uppercase text-ink-soft">
+                      {m.k}
+                    </dt>
+                    <dd className="mt-2 text-ink text-[15px]">{m.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* CHALLENGES */}
+      <section className="border-t border-border bg-card/30">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32 grid grid-cols-12 gap-10 md:gap-16">
+          <div className="col-span-12 md:col-span-3">
+            <Reveal>
+              <p className="text-[11px] tracking-[0.3em] uppercase text-wash sticky top-28 inline-flex items-center gap-3">
+                <span className="inline-block h-px w-8 bg-wash/60" /> Challenges
+              </p>
+            </Reveal>
+          </div>
+          <div className="col-span-12 md:col-span-9">
+            <Reveal>
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-ink max-w-2xl text-balance mb-12">
+                The constraints that shaped every decision.
+              </h2>
+            </Reveal>
+            <ul className="space-y-6">
+              {project.details.challenges.map((c, i) => (
+                <Reveal key={i} delay={i * 0.04}>
+                  <li className="flex gap-5 items-start border-b border-border pb-6 last:border-0">
+                    <span className="shrink-0 mt-1 text-[10px] tracking-[0.25em] text-wash font-mono">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="text-[17px] leading-relaxed text-ink max-w-3xl">{c}</p>
+                  </li>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* KEY FEATURES */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
+          <div className="flex items-end justify-between gap-6 mb-14">
+            <Reveal>
+              <p className="text-[11px] tracking-[0.3em] uppercase text-wash inline-flex items-center gap-3">
+                <span className="inline-block h-px w-8 bg-wash/60" /> Key features
+              </p>
+              <h2 className="mt-4 text-3xl md:text-4xl font-semibold tracking-tight text-ink max-w-2xl text-balance">
+                What we built, and why it mattered.
+              </h2>
+            </Reveal>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            {project.details.features.map((f, i) => (
+              <Reveal key={f.title} delay={i * 0.05}>
+                <article className="group relative h-full rounded-3xl border border-border bg-card p-7 md:p-9 overflow-hidden transition-colors hover:bg-secondary/40">
+                  <div
+                    aria-hidden
+                    className={`absolute -top-20 -right-20 h-48 w-48 rounded-full bg-gradient-to-br ${accentBg[project.accent]} opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-100`}
+                  />
+                  <div className="relative">
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-wash mb-4">
+                      0{i + 1}
+                    </p>
+                    <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-ink">
+                      {f.title}
+                    </h3>
+                    <p className="mt-4 text-ink-soft text-[15px] leading-relaxed">
+                      {f.body}
+                    </p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       {/* VISUAL FEATURE */}
       <section className="border-y border-border bg-card/40">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-20 md:py-28">
@@ -366,6 +480,11 @@ function ProjectDetail() {
               </Reveal>
             ))}
           </div>
+          <Reveal delay={0.15}>
+            <p className="mt-10 text-[17px] leading-relaxed text-ink-soft max-w-2xl">
+              {project.details.outcome}
+            </p>
+          </Reveal>
         </div>
       </section>
 
