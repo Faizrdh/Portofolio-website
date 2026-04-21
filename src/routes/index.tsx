@@ -7,13 +7,13 @@ import { projects } from "@/data/projects";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aiden Mori — Product Designer & Engineer" },
+      { title: "Faiz Ridho — Web Developer & IT Programmer" },
       {
         name: "description",
         content:
-          "Calm, considered digital products. Selected work for fintech, editorial, and healthcare clients.",
+          "Structured, reliable, and scalable digital products. Selected work for fintech, editorial, and healthcare clients.",
       },
-      { property: "og:title", content: "Aiden Mori — Product Designer & Engineer" },
+      { property: "og:title", content: "Faiz Ridho — Web Developer & IT Programmer" },
       {
         property: "og:description",
         content: "Calm, considered digital products. Selected work and case studies.",
