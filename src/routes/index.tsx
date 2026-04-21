@@ -39,6 +39,15 @@ function Hero() {
 
   return (
     <section className="relative min-h-[100svh] flex items-end overflow-hidden ink-gradient grain pt-28">
+      {/* Top blend — softens the hero into the floating navbar */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-40 z-[1]"
+        style={{
+          background:
+            "linear-gradient(to bottom, color-mix(in oklab, var(--paper) 70%, transparent) 0%, color-mix(in oklab, var(--paper) 25%, transparent) 55%, transparent 100%)",
+        }}
+      />
       {/* Soft animated wash */}
       {!reduce && (
         <>
@@ -56,6 +65,16 @@ function Hero() {
           />
         </>
       )}
+
+      {/* Bottom blend — fades hero into the next section */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40"
+        style={{
+          background:
+            "linear-gradient(to top, var(--paper) 0%, color-mix(in oklab, var(--paper) 60%, transparent) 50%, transparent 100%)",
+        }}
+      />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 w-full pb-20 md:pb-28">
         <div className="grid grid-cols-12 gap-6 items-end">
