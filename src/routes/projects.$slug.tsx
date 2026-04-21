@@ -480,6 +480,11 @@ function ProjectDetail() {
               </Reveal>
             ))}
           </div>
+          <Reveal delay={0.15}>
+            <p className="mt-10 text-[17px] leading-relaxed text-ink-soft max-w-2xl">
+              {project.details.outcome}
+            </p>
+          </Reveal>
         </div>
       </section>
 
