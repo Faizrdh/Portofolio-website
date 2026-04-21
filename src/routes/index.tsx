@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/reveal";
@@ -7,13 +9,13 @@ import { projects } from "@/data/projects";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aiden Mori — Product Designer & Engineer" },
+      { title: "Faiz Ridho — Web Developer" },
       {
         name: "description",
         content:
           "Calm, considered digital products. Selected work for fintech, editorial, and healthcare clients.",
       },
-      { property: "og:title", content: "Aiden Mori — Product Designer & Engineer" },
+      { property: "og:title", content: "Faiz Ridho — Web Developer" },
       {
         property: "og:description",
         content: "Calm, considered digital products. Selected work and case studies.",
@@ -38,13 +40,14 @@ function Hero() {
   const ease = [0.22, 1, 0.36, 1] as const;
 
   return (
-    <section className="relative min-h-[100svh] flex items-end overflow-hidden ink-gradient grain pt-28">
+    <section className="relative min-h-[100svh] flex items-end overflow-hidden grain pt-28">
+      
       {/* Soft animated wash */}
       {!reduce && (
         <>
           <motion.div
             aria-hidden
-            className="pointer-events-none absolute -top-40 -left-40 h-[60vmax] w-[60vmax] rounded-full bg-wash/15 blur-3xl"
+            className="pointer-events-none absolute -top-40 -left-40 h-[60vmax] w-[12-vmax] rounded-full bg-wash/15 blur-3xl"
             animate={{ x: [0, 40, -20, 0], y: [0, 20, -10, 0] }}
             transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
           />

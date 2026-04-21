@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";

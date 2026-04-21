@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/reveal";
 import { motion } from "framer-motion";
@@ -5,13 +6,13 @@ import { motion } from "framer-motion";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Aiden Mori" },
+      { title: "Contact — Faiz Ridho" },
       {
         name: "description",
         content:
           "Let's build something impactful together. Email, LinkedIn, GitHub, and current availability.",
       },
-      { property: "og:title", content: "Contact — Aiden Mori" },
+      { property: "og:title", content: "Contact — Faiz Ridho" },
       {
         property: "og:description",
         content: "Let's build something impactful together.",
@@ -47,9 +48,7 @@ function ContactPage() {
 
         <Reveal delay={0.12}>
           <p className="mt-10 max-w-xl text-ink-soft text-lg leading-relaxed text-balance">
-            I&apos;m taking on a small number of projects for Q2 — product
-            partnerships, design system work, and the occasional editorial
-            build.
+            I&apos;m taking on a small number of projects and collaborations. If you think we might be a good fit, or just want to say hi, my inbox is always open.
           </p>
         </Reveal>
 

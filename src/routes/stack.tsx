@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
@@ -7,13 +8,13 @@ import { motion } from "framer-motion";
 export const Route = createFileRoute("/stack")({
   head: () => ({
     meta: [
-      { title: "Stack — Aiden Mori" },
+      { title: "Stack — Faiz Ridho" },
       {
         name: "description",
         content:
           "Tools and technologies I reach for, grouped by intent. Frontend, backend, design, and the quiet glue.",
       },
-      { property: "og:title", content: "Stack — Aiden Mori" },
+      { property: "og:title", content: "Stack — Faiz Ridho" },
       {
         property: "og:description",
         content: "Tools grouped by intent: frontend, backend, design, and glue.",

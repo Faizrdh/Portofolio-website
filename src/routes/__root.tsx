@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -29,13 +30,13 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Aiden Mori — Product Designer & Engineer" },
+      { title: "Faiz Ridho — Web Developer" },
       {
         name: "description",
         content:
-          "Selected work, writing, and contact for Aiden Mori — a product designer and front-end engineer crafting calm, considered digital products.",
+          "Selected work, writing, and contact for Faiz Ridho — a web developer and designer creating modern, user-friendly digital experiences.",
       },
-      { name: "author", content: "Aiden Mori" },
+      { name: "author", content: "Faiz Ridho" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

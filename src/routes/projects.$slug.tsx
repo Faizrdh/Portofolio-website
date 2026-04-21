@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Reveal } from "@/components/reveal";
 import { getProject, projects, type Project } from "@/data/projects";
@@ -10,10 +11,10 @@ export const Route = createFileRoute("/projects/$slug")({
   },
   head: ({ loaderData }) => {
     const p = loaderData?.project;
-    if (!p) return { meta: [{ title: "Project — Aiden Mori" }] };
+    if (!p) return { meta: [{ title: "Project — Faiz Ridho" }] };
     return {
       meta: [
-        { title: `${p.title} — Case Study · Aiden Mori` },
+        { title: `${p.title} — Case Study · Faiz Ridho` },
         { name: "description", content: p.tagline },
         { property: "og:title", content: `${p.title} — Case Study` },
         { property: "og:description", content: p.tagline },

@@ -7,13 +7,13 @@ import { Reveal } from "@/components/reveal";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Clarity, built through systems" },
+      { title: "About — Faiz Ridho" },
       {
         name: "description",
         content:
           "Web developer and IT programmer focused on building structured, reliable, and scalable digital products — clear, efficient, and purposeful.",
       },
-      { property: "og:title", content: "About — Clarity, built through systems" },
+      { property: "og:title", content: "About — Faiz Ridho" },
       {
         property: "og:description",
         content:

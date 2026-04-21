@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
@@ -7,13 +8,13 @@ import { projects } from "@/data/projects";
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Selected Work — Aiden Mori" },
+      { title: "Selected Work — Faiz Ridho" },
       {
         name: "description",
         content:
-          "Case studies across fintech, editorial, healthcare, and brand. Problem, solution, stack, and measurable impact.",
+          "Case studies across fintech, website design, frontend, and brand. Problem, solution, stack, and measurable impact.",
       },
-      { property: "og:title", content: "Selected Work — Aiden Mori" },
+      { property: "og:title", content: "Selected Work — Faiz Ridho" },
       {
         property: "og:description",
         content: "Case studies with problem, solution, stack, and measurable impact.",
