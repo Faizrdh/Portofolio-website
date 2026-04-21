@@ -29,7 +29,16 @@ const channels = [
 
 function ContactPage() {
   return (
-    <section className="relative min-h-[100svh] flex items-center pt-32 pb-24 ink-gradient grain overflow-hidden">
+    <section className="relative min-h-[100svh] flex items-center pt-32 pb-24 grain overflow-hidden">
+      {/* Bottom blend into footer */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-32"
+        style={{
+          background:
+            "linear-gradient(to top, var(--paper) 0%, transparent 100%)",
+        }}
+      />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 w-full">
         <Reveal>
           <p className="text-[11px] tracking-[0.3em] uppercase text-wash mb-8 inline-flex items-center gap-3">
