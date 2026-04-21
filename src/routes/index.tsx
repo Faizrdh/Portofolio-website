@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable prettier/prettier */
 
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useReducedMotion } from "framer-motion";
@@ -35,19 +36,132 @@ function Index() {
   );
 }
 
+// ─────────────────────────────────────────────────────────────
+// HANDWRITING LINE
+// Reveals text left → right via clipPath (like a pen writing),
+// with a slim vertical cursor bar that leads the reveal.
+// ─────────────────────────────────────────────────────────────
+function HandwritingLine({
+  children,
+  delay = 0,
+  duration = 1.35,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  duration?: number;
+}) {
+  const reduce = useReducedMotion();
+  const ease = [0.16, 1, 0.3, 1] as const;
+
+  if (reduce) {
+    return <span className="block">{children}</span>;
+  }
+
+  return (
+    <span className="relative block overflow-visible">
+      {/* Text — clips open left → right */}
+      <motion.span
+        className="block"
+        initial={{ clipPath: "inset(0 101% 0 0)" }}
+        animate={{ clipPath: "inset(0 0% 0 0)" }}
+        transition={{ duration, delay, ease }}
+      >
+        {children}
+      </motion.span>
+
+      {/* Pen cursor — travels ahead of the ink, then fades out */}
+      <motion.span
+        aria-hidden
+        className="pointer-events-none absolute top-[5%] h-[90%] w-0.5 rounded-full bg-ink/50"
+        initial={{ left: "0%", opacity: 1 }}
+        animate={{ left: "100%", opacity: 0 }}
+        transition={{ duration, delay, ease }}
+      />
+    </span>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// SYSTEMS TEXT
+// The italic "systems." word with an SVG path drawn underneath
+// it after the word finishes — like a pen underlining.
+// ─────────────────────────────────────────────────────────────
+function SystemsText() {
+  const reduce = useReducedMotion();
+  // starts after line-2 finishes: delay(0.18) + duration(1.35) ≈ 1.55s
+  const underlineDelay = 1.6;
+
+  return (
+    <span className="relative italic font-light text-wash">
+      systems.
+      {!reduce && (
+        <svg
+          aria-hidden
+          className="absolute left-0 w-full overflow-visible"
+          style={{ bottom: "-0.15em" }}
+          height="10"
+          viewBox="0 0 100 10"
+          preserveAspectRatio="none"
+        >
+          {/* Slightly wavy organic underline */}
+          <motion.path
+            d="M 0 6 C 20 2, 40 9, 60 5 S 85 3, 100 6"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={{
+              pathLength: {
+                duration: 0.75,
+                delay: underlineDelay,
+                ease: [0.16, 1, 0.3, 1],
+              },
+              opacity: {
+                duration: 0.01,
+                delay: underlineDelay,
+              },
+            }}
+          />
+
+          {/* Tiny dot — pen lifting off the page */}
+          <motion.circle
+            cx="100"
+            cy="6"
+            r="1.6"
+            fill="currentColor"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: [0, 1, 0], scale: [0, 1.2, 0] }}
+            transition={{
+              duration: 0.4,
+              delay: underlineDelay + 0.7,
+              ease: "easeOut",
+            }}
+          />
+        </svg>
+      )}
+    </span>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// HERO
+// ─────────────────────────────────────────────────────────────
 function Hero() {
   const reduce = useReducedMotion();
   const ease = [0.22, 1, 0.36, 1] as const;
 
   return (
     <section className="relative min-h-[100svh] flex items-end overflow-hidden grain pt-28">
-      
+
       {/* Soft animated wash */}
       {!reduce && (
         <>
           <motion.div
             aria-hidden
-            className="pointer-events-none absolute -top-40 -left-40 h-[60vmax] w-[12-vmax] rounded-full bg-wash/15 blur-3xl"
+            className="pointer-events-none absolute -top-40 -left-40 h-[60vmax] w-[60vmax] rounded-full bg-wash/15 blur-3xl"
             animate={{ x: [0, 40, -20, 0], y: [0, 20, -10, 0] }}
             transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -63,6 +177,8 @@ function Hero() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 w-full pb-20 md:pb-28">
         <div className="grid grid-cols-12 gap-6 items-end">
           <div className="col-span-12 md:col-span-9">
+
+            {/* Portfolio label */}
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -73,17 +189,19 @@ function Hero() {
               Portfolio · 2025
             </motion.p>
 
+            {/* ── HANDWRITING HEADING ── */}
             <h1 className="font-semibold tracking-tight text-ink leading-[0.95] text-[clamp(2.5rem,8vw,7rem)]">
-              <RevealLine delay={0.05}>Clarity,</RevealLine>
-              <RevealLine delay={0.18}>
-                built through <span className="italic font-light text-wash">systems.</span>
-              </RevealLine>
+              <HandwritingLine delay={0.05}>Clarity,</HandwritingLine>
+              <HandwritingLine delay={0.18}>
+                built through <SystemsText />
+              </HandwritingLine>
             </h1>
 
+            {/* Body paragraph — delayed to appear after heading finishes */}
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.45, ease }}
+              transition={{ duration: 0.8, delay: 1.9, ease }}
               className="mt-10 max-w-xl text-ink-soft text-lg md:text-xl leading-relaxed text-balance"
             >
               A web developer and IT programmer building structured, reliable,
@@ -91,10 +209,11 @@ function Hero() {
               more than noise.
             </motion.p>
 
+            {/* CTA buttons — appear after body copy */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease }}
+              transition={{ duration: 0.8, delay: 2.05, ease }}
               className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4"
             >
               <Link
@@ -108,6 +227,7 @@ function Hero() {
                 Or get in touch
               </Link>
             </motion.div>
+
           </div>
 
           <div className="hidden md:flex col-span-3 flex-col items-end gap-2 text-right text-[11px] tracking-[0.25em] uppercase text-ink-soft">
@@ -121,27 +241,12 @@ function Hero() {
         aria-hidden
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
+        transition={{ delay: 2.2, duration: 1 }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.4em] uppercase text-ink-soft"
       >
         Scroll
       </motion.div>
     </section>
-  );
-}
-
-function RevealLine({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-  return (
-    <span className="block overflow-hidden">
-      <motion.span
-        initial={{ y: "110%" }}
-        animate={{ y: "0%" }}
-        transition={{ duration: 0.95, delay, ease: [0.22, 1, 0.36, 1] }}
-        className="block"
-      >
-        {children}
-      </motion.span>
-    </span>
   );
 }
 
