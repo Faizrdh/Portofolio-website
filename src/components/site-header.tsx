@@ -27,14 +27,34 @@ export function SiteHeader() {
   }, [location.pathname]);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50">
+    <header className="fixed top-0 inset-x-0 z-50 pointer-events-none">
+      {/* Soft top fade so the page blends into the navbar instead of cutting hard */}
+      <div
+        aria-hidden
+        className={[
+          "absolute inset-x-0 top-0 transition-opacity duration-500",
+          scrolled ? "opacity-100" : "opacity-0",
+        ].join(" ")}
+        style={{
+          height: "120px",
+          background:
+            "linear-gradient(to bottom, color-mix(in oklab, var(--paper) 75%, transparent) 0%, color-mix(in oklab, var(--paper) 35%, transparent) 55%, transparent 100%)",
+          backdropFilter: "blur(6px)",
+          WebkitBackdropFilter: "blur(6px)",
+        }}
+      />
       <div
         className={[
-          "mx-auto max-w-6xl px-4 transition-all duration-500",
+          "relative pointer-events-auto mx-auto max-w-6xl px-4 transition-all duration-500",
           scrolled ? "mt-3" : "mt-5",
         ].join(" ")}
       >
-        <div className="glass-capsule rounded-full pl-5 pr-2 h-14 flex items-center justify-between gap-4">
+        <div
+          className={[
+            "glass-capsule rounded-full pl-5 pr-2 h-14 flex items-center justify-between gap-4 transition-all duration-500",
+            scrolled ? "shadow-[0_18px_50px_-20px_rgba(74,74,74,0.35)]" : "",
+          ].join(" ")}
+        >
           <Link to="/" className="group inline-flex items-center gap-2.5 shrink-0">
             <span className="relative inline-flex h-7 w-7 items-center justify-center">
               <span className="absolute inset-0 rounded-full bg-wash/25" />

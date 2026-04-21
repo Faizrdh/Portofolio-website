@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Aiden Mori" },
+      { title: "Contact — Faiz Ridho" },
       {
         name: "description",
         content:
           "Let's build something impactful together. Email, LinkedIn, GitHub, and current availability.",
       },
-      { property: "og:title", content: "Contact — Aiden Mori" },
+      { property: "og:title", content: "Contact — Faiz Ridho" },
       {
         property: "og:description",
         content: "Let's build something impactful together.",
