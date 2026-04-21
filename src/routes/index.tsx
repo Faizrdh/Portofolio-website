@@ -38,16 +38,7 @@ function Hero() {
   const ease = [0.22, 1, 0.36, 1] as const;
 
   return (
-    <section className="relative min-h-[100svh] flex items-end overflow-hidden ink-gradient grain pt-28">
-      {/* Top blend — softens the hero into the floating navbar */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-40 z-[1]"
-        style={{
-          background:
-            "linear-gradient(to bottom, color-mix(in oklab, var(--paper) 70%, transparent) 0%, color-mix(in oklab, var(--paper) 25%, transparent) 55%, transparent 100%)",
-        }}
-      />
+    <section className="relative min-h-[100svh] flex items-end overflow-hidden grain pt-28">
       {/* Soft animated wash */}
       {!reduce && (
         <>
