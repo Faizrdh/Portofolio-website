@@ -1,5 +1,5 @@
-// Elegant monochrome SVG glyphs for each toolkit item.
-// Stroked or filled in `currentColor` so they inherit ink/wash tones.
+/* eslint-disable prettier/prettier */
+
 
 type Props = { className?: string };
 

@@ -56,7 +56,10 @@ function ProjectDetail() {
       <header className="pt-36 md:pt-44 pb-16 md:pb-24 border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
-            <Link to="/projects" className="text-[11px] tracking-[0.3em] uppercase text-wash inline-flex items-center gap-3 mb-8">
+            <Link
+              to="/projects"
+              className="text-[11px] tracking-[0.3em] uppercase text-wash inline-flex items-center gap-3 mb-8"
+            >
               <span className="inline-block">←</span> All work
             </Link>
           </Reveal>
@@ -70,6 +73,20 @@ function ProjectDetail() {
               {project.tagline}
             </p>
           </Reveal>
+
+          {/* ✅ Visit Site button — hanya tampil jika project.url tersedia */}
+          {project.url && (
+            <Reveal delay={0.12}>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[12px] tracking-[0.15em] uppercase text-paper transition-opacity hover:opacity-70"
+              >
+                Visit Site <span>↗</span>
+              </a>
+            </Reveal>
+          )}
 
           <Reveal delay={0.15}>
             <dl className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden border border-border">
@@ -172,9 +189,7 @@ function Section({ label, title, body }: { label: string; title: string; body: s
           </h2>
         </Reveal>
         <Reveal delay={0.05}>
-          <p className="mt-5 text-[17px] leading-relaxed text-ink-soft max-w-2xl">
-            {body}
-          </p>
+          <p className="mt-5 text-[17px] leading-relaxed text-ink-soft max-w-2xl">{body}</p>
         </Reveal>
       </div>
     </>

@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 import { Link } from "@tanstack/react-router";
 import type { Project } from "@/data/projects";
 
@@ -9,58 +11,83 @@ const accents: Record<Project["accent"], string> = {
 };
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const inner = (
+    <article className="relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_30px_60px_-30px_rgba(74,74,74,0.25)]">
+      {/* Visual */}
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <div className={`absolute inset-0 bg-gradient-to-br ${accents[project.accent]}`} />
+        <div className="absolute inset-0 grain" />
+
+        {/* Project image (jika ada) */}
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : (
+          <ProjectGlyph accent={project.accent} />
+        )}
+
+        {/* Hover overlay */}
+        <div className="absolute inset-0 flex items-end p-6 opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+          <span className="inline-flex items-center gap-2 rounded-full bg-ink/90 backdrop-blur px-4 py-2 text-xs uppercase tracking-[0.2em] text-paper">
+            {project.url ? "Visit site" : "View case study"}
+            <span className="transition-transform duration-300 group-hover:translate-x-0.5">
+              {project.url ? "↗" : "→"}
+            </span>
+          </span>
+        </div>
+
+        <div className="absolute top-5 left-5 text-[11px] tracking-[0.25em] uppercase text-ink/70">
+          {String(index + 1).padStart(2, "0")} / {project.year}
+        </div>
+      </div>
+
+      {/* Meta */}
+      <div className="p-6 md:p-7">
+        <div className="flex items-baseline justify-between gap-4">
+          <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-ink">
+            {project.title}
+          </h3>
+          <span className="text-[11px] tracking-[0.2em] uppercase text-ink-soft whitespace-nowrap">
+            {project.tags[0]}
+          </span>
+        </div>
+        <p className="mt-2 text-ink-soft text-[15px] leading-relaxed">{project.tagline}</p>
+      </div>
+    </article>
+  );
+
+  // ✅ Jika project punya URL eksternal → pakai <a> biasa (buka tab baru)
+  if (project.url) {
+    return (
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative block"
+      >
+        {inner}
+      </a>
+    );
+  }
+
+  // Fallback → routing internal ke halaman case study
   return (
     <Link
       to="/projects/$slug"
       params={{ slug: project.slug }}
       className="group relative block"
     >
-      <article className="relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_30px_60px_-30px_rgba(74,74,74,0.25)]">
-        {/* Visual */}
-        <div className="relative aspect-[4/3] overflow-hidden">
-          <div className={`absolute inset-0 bg-gradient-to-br ${accents[project.accent]}`} />
-          <div className="absolute inset-0 grain" />
-          <ProjectGlyph accent={project.accent} />
-
-          {/* Hover overlay */}
-          <div className="absolute inset-0 flex items-end p-6 opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-            <span className="inline-flex items-center gap-2 rounded-full bg-ink/90 backdrop-blur px-4 py-2 text-xs uppercase tracking-[0.2em] text-paper">
-              View case study
-              <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
-            </span>
-          </div>
-
-          <div className="absolute top-5 left-5 text-[11px] tracking-[0.25em] uppercase text-ink/70">
-            {String(index + 1).padStart(2, "0")} / {project.year}
-          </div>
-        </div>
-
-        {/* Meta */}
-        <div className="p-6 md:p-7">
-          <div className="flex items-baseline justify-between gap-4">
-            <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-ink">
-              {project.title}
-            </h3>
-            <span className="text-[11px] tracking-[0.2em] uppercase text-ink-soft whitespace-nowrap">
-              {project.tags[0]}
-            </span>
-          </div>
-          <p className="mt-2 text-ink-soft text-[15px] leading-relaxed">
-            {project.tagline}
-          </p>
-        </div>
-      </article>
+      {inner}
     </Link>
   );
 }
 
 function ProjectGlyph({ accent }: { accent: Project["accent"] }) {
   return (
-    <svg
-      viewBox="0 0 400 300"
-      className="absolute inset-0 h-full w-full"
-      aria-hidden
-    >
+    <svg viewBox="0 0 400 300" className="absolute inset-0 h-full w-full" aria-hidden>
       <defs>
         <linearGradient id={`g-${accent}`} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="oklch(0.6 0.035 245)" stopOpacity="0.5" />

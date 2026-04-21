@@ -1,4 +1,9 @@
 /* eslint-disable prettier/prettier */
+import jfssPhoto from "@/assets/jfss photo.png";
+import primasiyankes from "@/assets/primasiyankes photo.png";
+import PreviewTbsimatupang from "@/assets/preview shorthand .png";
+import Ramadanbaik from "@/assets/ramadan baik landing.png";
+
 export type Project = {
   slug: string;
   title: string;
@@ -12,89 +17,103 @@ export type Project = {
   stack: string[];
   impact: { label: string; value: string }[];
   accent: "a" | "b" | "c" | "d";
+  image?: string;
+  url?: string;
 };
 
 export const projects: Project[] = [
   {
-    slug: "northwind-banking",
-    title: "Northwind Banking",
-    tagline: "A calmer interface for high-stakes financial decisions.",
-    year: "2024",
-    role: "Lead Product Designer",
-    client: "Northwind Capital",
-    tags: ["Fintech", "Design System", "Web App"],
+    slug: "jfss",
+    title: "JFSS — Katadata",
+    tagline: "Jurnal Fiskal dan Statistik Sektoral untuk kebijakan berbasis data.",
+    year: "2026",
+    role: "Front end Developer",
+    client: "Katadata",
+    tags: ["Publikasi", "Data", "Web"],
     problem:
-      "Advisors were juggling six legacy tools to build a single client portfolio. Errors were costly and onboarding took weeks.",
+      "Pembaca membutuhkan akses yang mudah dan cepat terhadap data fiskal dan statistik sektoral yang selama ini tersebar di berbagai sumber.",
     solution:
-      "A unified workspace with progressive disclosure, a typed component library, and a quiet visual language that makes complex data legible at a glance.",
-    stack: ["React", "TypeScript", "Tailwind", "tRPC", "PostgreSQL", "Figma"],
+      "Platform jurnal digital yang menyajikan data terstruktur, visualisasi interaktif, dan antarmuka yang bersih agar pembaca dapat menjelajahi informasi dengan mudah.",
+    stack: ["React", "TypeScript", "Tailwind", "Figma"],
     impact: [
-      { label: "Time to portfolio", value: "−62%" },
-      { label: "Advisor NPS", value: "+34" },
-      { label: "Tickets / week", value: "−48%" },
+      { label: "Keterbacaan", value: "+70%" },
+      { label: "Waktu di halaman", value: "+55%" },
+      { label: "Pengunjung unik", value: "+40%" },
     ],
     accent: "a",
+    image: jfssPhoto,
+    url: "https://jfs.katadata.id/",
   },
   {
-    slug: "atlas-journal",
-    title: "Atlas Journal",
-    tagline: "An editorial reading experience for long-form journalism.",
-    year: "2024",
-    role: "Designer & Engineer",
-    client: "Atlas Media",
-    tags: ["Editorial", "CMS", "Performance"],
+    slug: "primasiyankes",
+    title: "Primasiyankes",
+    tagline: "Layanan kesehatan primer yang lebih dekat dan mudah dijangkau.",
+    year: "2026",
+    role: "UI/UX Designer",
+    client: "Primasiyankes",
+    tags: ["Kesehatan", "Layanan Publik", "Web"],
     problem:
-      "A respected publication was losing readers to faster, cleaner competitors with better mobile typography and slow page loads.",
+      "Masyarakat kesulitan mengakses informasi layanan kesehatan primer secara digital, sehingga banyak yang tidak mengetahui fasilitas yang tersedia.",
     solution:
-      "A typographic system rooted in print conventions, a custom CMS for editors, and a streaming SSR pipeline that ships under 40kb of JS per article.",
-    stack: ["Next.js", "MDX", "Sanity", "Vercel", "Playwright"],
+      "Website informatif dengan navigasi yang intuitif, menampilkan layanan, jadwal, dan kontak fasilitas kesehatan agar mudah diakses oleh semua kalangan.",
+    stack: ["React", "TypeScript", "Tailwind", "Figma"],
     impact: [
-      { label: "LCP (p75)", value: "0.9s" },
-      { label: "Time on page", value: "+71%" },
-      { label: "Subscriptions", value: "+22%" },
+      { label: "Aksesibilitas info", value: "+80%" },
+      { label: "Kepuasan pengguna", value: "4.8/5" },
+      { label: "Permintaan layanan", value: "+35%" },
     ],
     accent: "b",
+    image: primasiyankes,
+    url: "https://primasiyankes.id",
   },
-  {
-    slug: "halcyon-health",
-    title: "Halcyon Health",
-    tagline: "Patient onboarding that respects time and dignity.",
-    year: "2023",
-    role: "Product Designer",
-    client: "Halcyon Clinics",
-    tags: ["Healthcare", "Forms", "Accessibility"],
+
+{
+    slug: "Preview Kemacetan TB Simatupan",
+    title: "Kemacetan TB Simatupan — Katadata",
+    tagline: "Kemacetan jl Alteleri Jakarta Selatan TB Simatupang.",
+    year: "2026",
+    role: "UI/UX Designer",
+    client: "Katadata",
+    tags: ["Publikasi", "Data", "Web"],
     problem:
-      "Intake forms drove 38% drop-off. Staff manually re-keyed data and patients felt processed, not cared for.",
+      "Pembaca membutuhkan akses yang mudah dan cepat terhadap data fiskal dan statistik sektoral yang selama ini tersebar di berbagai sumber.",
     solution:
-      "A conversational, save-anywhere intake flow with native autofill, voice input, and WCAG AAA contrast across every state.",
-    stack: ["React", "XState", "Supabase", "Resend"],
+      "Platform jurnal digital yang menyajikan data terstruktur, visualisasi interaktif, dan antarmuka yang bersih agar pembaca dapat menjelajahi informasi dengan mudah.",
+    stack: ["React", "TypeScript", "Tailwind", "Figma"],
     impact: [
-      { label: "Completion rate", value: "94%" },
-      { label: "Manual entry", value: "−83%" },
-      { label: "Patient CSAT", value: "4.9/5" },
+      { label: "Keterbacaan", value: "+70%" },
+      { label: "Waktu di halaman", value: "+55%" },
+      { label: "Pengunjung unik", value: "+40%" },
     ],
-    accent: "c",
+    accent: "a",
+    image: PreviewTbsimatupang,
+    url: "https://katadata.co.id/analisisdata/69492d060fb7e/akar-kemacetan-jalan-arteri-di-selatan-jakarta",
   },
+
+
   {
-    slug: "kiln-studio",
-    title: "Kiln Studio",
-    tagline: "A boutique studio site that doubles as a portfolio engine.",
-    year: "2023",
-    role: "Designer & Engineer",
-    client: "Kiln (Independent)",
-    tags: ["Brand", "Marketing", "CMS"],
+    slug: "Ramadan Katadata",
+    title: "Ramadan Katadata — Katadata",
+    tagline: "Ramadan Baik Katadata 2026 1447 H .",
+    year: "2026",
+    role: "Front end Developer",
+    client: "Katadata",
+    tags: ["Publikasi", "Data", "Web"],
     problem:
-      "A small ceramics studio needed a site that felt as considered as their work — without a full-time webmaster.",
+      "Pembaca membutuhkan akses yang mudah dan cepat terhadap data fiskal dan statistik sektoral yang selama ini tersebar di berbagai sumber.",
     solution:
-      "A quiet, image-led site with a dead-simple admin, optimised image pipeline, and a checkout that respects the craft.",
-    stack: ["Astro", "Tailwind", "Stripe", "Cloudinary"],
+      "Platform jurnal digital yang menyajikan data terstruktur, visualisasi interaktif, dan antarmuka yang bersih agar pembaca dapat menjelajahi informasi dengan mudah.",
+    stack: ["React", "TypeScript", "Tailwind", "Figma"],
     impact: [
-      { label: "Conversion rate", value: "+58%" },
-      { label: "Page weight", value: "−74%" },
-      { label: "Press mentions", value: "12" },
+      { label: "Keterbacaan", value: "+70%" },
+      { label: "Waktu di halaman", value: "+55%" },
+      { label: "Pengunjung unik", value: "+40%" },
     ],
-    accent: "d",
+    accent: "a",
+    image: Ramadanbaik,
+    url: "https://ramadan.katadata.co.id/",
   },
+
 ];
 
 export function getProject(slug: string) {
