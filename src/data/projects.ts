@@ -3,6 +3,7 @@ import jfssPhoto from "@/assets/jfss photo.png";
 import primasiyankes from "@/assets/primasiyankes photo.png";
 import PreviewTbsimatupang from "@/assets/preview shorthand .png";
 import Ramadanbaik from "@/assets/ramadan baik landing.png";
+import Cosmic from "@/assets/cosmic-commander.png";
 
 export type Project = {
   slug: string;
@@ -15,7 +16,7 @@ export type Project = {
   about: string;
   timeline: string;
   stack: string[];
-  accent: "a" | "b" | "c" | "d";
+  accent: "a" | "b" | "c" | "d" | "e";
   image?: string;
   url?: string;
 };
@@ -87,6 +88,23 @@ export const projects: Project[] = [
     accent: "d",
     image: Ramadanbaik,
     url: "https://ramadan.katadata.co.id/",
+  },
+
+  {
+    slug: "cosmic-commander",
+    title: "Cosmic Commander",
+    tagline: "A space strategy game where you command fleets across the galaxy.",
+    year: "2026",
+    role: "Front-end Developer",
+    client: "Personal Project",
+    tags: ["Game", "Interactive", "Web"],
+    about:
+      "Cosmic Commander is a browser-based space strategy game built with modern web technologies. Players take command of interstellar fleets, manage resources across star systems, and engage in tactical battles against AI or other commanders across the galaxy.",
+    timeline: "2026",
+    stack: ["React", "TypeScript", "Canvas API", "Tailwind"],
+    accent: "e",
+    image: Cosmic,
+    url: "https://cosmic-commander.faizcodes.my.id",
   },
 ];
 

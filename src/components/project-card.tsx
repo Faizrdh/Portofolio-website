@@ -8,6 +8,7 @@ const accents: Record<Project["accent"], string> = {
   b: "from-[oklch(0.7_0.04_70)]/30 via-wash/10 to-transparent",
   c: "from-[oklch(0.7_0.05_180)]/25 via-wash/10 to-transparent",
   d: "from-[oklch(0.6_0.05_30)]/25 via-wash/10 to-transparent",
+  e: "from-[oklch(0.65_0.14_290)]/30 via-[oklch(0.5_0.08_300)]/10 to-transparent",
 };
 
 const accentBg: Record<Project["accent"], string> = {
@@ -15,6 +16,7 @@ const accentBg: Record<Project["accent"], string> = {
   b: "from-[oklch(0.45_0.06_70)] to-[oklch(0.35_0.07_60)]",
   c: "from-[oklch(0.40_0.07_180)] to-[oklch(0.30_0.08_190)]",
   d: "from-[oklch(0.38_0.07_30)] to-[oklch(0.28_0.08_20)]",
+  e: "from-[oklch(0.32_0.16_290)] to-[oklch(0.20_0.18_305)]",
 };
 
 
@@ -185,6 +187,30 @@ function ProjectGlyph({ accent }: { accent: Project["accent"] }) {
         <g>
           <circle cx="160" cy="150" r="80" fill={`url(#g-${accent})`} />
           <circle cx="240" cy="150" r="80" fill={`url(#g-${accent})`} opacity="0.7" style={{ mixBlendMode: "multiply" }} />
+        </g>
+      )}
+      {accent === "e" && (
+        <g fill="none">
+          {/* Stars scattered across the field */}
+          {[
+            [60, 50], [130, 80], [310, 40], [360, 90], [80, 140],
+            [250, 70], [200, 200], [340, 180], [40, 230], [170, 260],
+            [290, 240], [100, 280], [380, 260], [220, 120], [150, 180],
+          ].map(([cx, cy], i) => (
+            <circle
+              key={i}
+              cx={cx}
+              cy={cy}
+              r={i % 3 === 0 ? 2 : 1}
+              fill="oklch(0.85 0.06 290)"
+              opacity={0.3 + (i % 4) * 0.15}
+            />
+          ))}
+          {/* Central planet ring */}
+          <ellipse cx="200" cy="150" rx="55" ry="18" stroke="oklch(0.65 0.14 290)" strokeWidth="1" opacity="0.5" />
+          <circle cx="200" cy="150" r="28" fill="oklch(0.28 0.16 300)" stroke="oklch(0.65 0.14 290)" strokeWidth="1" opacity="0.7" />
+          {/* Orbit arc */}
+          <ellipse cx="200" cy="150" rx="90" ry="30" stroke="oklch(0.6 0.10 290)" strokeWidth="0.75" strokeDasharray="4 6" opacity="0.35" />
         </g>
       )}
     </svg>
