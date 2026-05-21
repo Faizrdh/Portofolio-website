@@ -37,7 +37,13 @@ function Index() {
 
 // ─── Handwriting Title ────────────────────────────────────────────────────────
 //
-// Teknik:
+// FIX RESPONSIVE: Baris 2 dipecah menjadi dua baris terpisah:
+//   - Baris 2: "built through"
+//   - Baris 3: "systems."
+// Ini mencegah teks overflow/terpotong di layar kecil (mobile),
+// karena SVG <text> tidak bisa wrap otomatis seperti HTML text.
+//
+// Teknik per baris:
 //   - <span invisible> sebagai placeholder layout → tinggi baris benar, tidak overlap
 //   - <svg absolute> overlay di atasnya → hanya untuk animasi, tidak ganggu layout
 //
@@ -77,13 +83,11 @@ function HandwriteTitle() {
           delay,
           ease,
         },
-        // Fill muncul setelah stroke ~60% jalan → transisi yang smooth
         fillOpacity: {
           duration: 0.5,
           delay: delay + duration * 0.6,
           ease: "easeIn",
         },
-        // Stroke hilang segera setelah fill penuh → tidak ada outline/shadow tersisa
         strokeOpacity: {
           duration: 0.15,
           delay: delay + duration * 0.9,
@@ -103,13 +107,11 @@ function HandwriteTitle() {
       aria-label="Clarity, built through systems."
       className="font-semibold tracking-tight text-ink leading-[0.95] text-[clamp(2.5rem,8vw,7rem)]"
     >
-      {/* ── Baris 1 ────────────────────────────────────────────────────── */}
+      {/* ── Baris 1: Clarity, ──────────────────────────────────────────── */}
       <span className="relative block">
-        {/* Placeholder invisible: menentukan tinggi baris, tidak terlihat user */}
         <span aria-hidden className="invisible select-none block">
           Clarity,
         </span>
-        {/* SVG overlay: animasi saja, absolute di atas placeholder */}
         <svg
           aria-hidden
           className="absolute inset-0 w-full h-full pointer-events-none"
@@ -131,19 +133,18 @@ function HandwriteTitle() {
         </svg>
       </span>
 
-      {/* ── Baris 2 ────────────────────────────────────────────────────── */}
+      {/* ── Baris 2: built through ─────────────────────────────────────── */}
+      {/* FIX: dipecah dari "built through systems." menjadi dua baris    */}
+      {/* agar tidak overflow di viewport mobile yang sempit              */}
       <span className="relative block">
-        {/* Placeholder: termasuk italic/light agar lebar cocok dengan SVG */}
         <span aria-hidden className="invisible select-none block">
-          built through{" "}
-          <span className="italic font-light">systems.</span>
+          built through
         </span>
         <svg
           aria-hidden
           className="absolute inset-0 w-full h-full pointer-events-none"
           overflow="visible"
         >
-         
           <motion.text
             y="0.87em"
             fill="var(--color-ink)"
@@ -153,17 +154,37 @@ function HandwriteTitle() {
             strokeLinecap="round"
             fontWeight={600}
             style={textStyle}
-            {...mkAnim(0.85, 1.9)}
+            {...mkAnim(0.85, 1.5)}
           >
-            built through{" "}
-            <tspan
-              fontStyle="italic"
-              fontWeight={300}
-              fill="var(--color-wash)"
-              stroke="var(--color-wash)"
-            >
-              systems.
-            </tspan>
+            built through
+          </motion.text>
+        </svg>
+      </span>
+
+      {/* ── Baris 3: systems. ─────────────────────────────────────────── */}
+      {/* FIX: baris baru khusus "systems." dengan gaya italic/light      */}
+      <span className="relative block">
+        <span aria-hidden className="invisible select-none block italic font-light">
+          systems.
+        </span>
+        <svg
+          aria-hidden
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          overflow="visible"
+        >
+          <motion.text
+            y="0.87em"
+            fill="var(--color-wash)"
+            stroke="var(--color-wash)"
+            strokeWidth={0.8}
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            fontStyle="italic"
+            fontWeight={300}
+            style={textStyle}
+            {...mkAnim(2.0, 1.3)}
+          >
+            systems.
           </motion.text>
         </svg>
       </span>
@@ -202,7 +223,7 @@ function Hero() {
         <div className="grid grid-cols-12 gap-6 items-end">
           <div className="col-span-12 md:col-span-9">
 
-            {/* Label Portfolio · 2025 */}
+            {/* Label Portfolio · 2026 */}
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -216,11 +237,12 @@ function Hero() {
             {/* ── Handwriting Title ── */}
             <HandwriteTitle />
 
-            {/* Paragraph: muncul setelah animasi judul selesai */}
+            {/* Paragraph: muncul setelah animasi 3 baris selesai */}
+            {/* FIX: delay dinaikkan dari 3.1 → 3.7 agar sinkron dengan 3 baris */}
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 3.1, ease }}
+              transition={{ duration: 0.8, delay: 3.7, ease }}
               className="mt-10 max-w-xl text-ink-soft text-lg md:text-xl leading-relaxed text-balance"
             >
               A web developer and IT programmer building structured, reliable,
@@ -229,10 +251,11 @@ function Hero() {
             </motion.p>
 
             {/* CTA Buttons */}
+            {/* FIX: delay dinaikkan dari 3.35 → 3.9 */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 3.35, ease }}
+              transition={{ duration: 0.8, delay: 3.9, ease }}
               className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4"
             >
               <Link
@@ -257,11 +280,12 @@ function Hero() {
       </div>
 
       {/* Scroll cue */}
+      {/* FIX: delay dinaikkan dari 3.6 → 4.2 */}
       <motion.div
         aria-hidden
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3.6, duration: 1 }}
+        transition={{ delay: 4.2, duration: 1 }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.4em] uppercase text-ink-soft"
       >
       </motion.div>
